@@ -1,4 +1,3 @@
-import Bool "mo:base/Bool";
 1. Write a function multiply that takes two natural numbers and returns the product.
 
 
