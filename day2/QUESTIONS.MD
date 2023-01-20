@@ -12,6 +12,10 @@ Ref: https://dashboard.internetcomputer.org/subnet/pae4o-o6dxf-xki7q-ezclx-znyd6
 
 3. I have a neuron with 1O ICPs locked with a dissolve delay of 4 years - my neuron has been locked for 2 years. What is my expected voting power?
 
+Dissolve delay: 1 + (4 * 12 * 0.01) = 1.48 bonus multiplier
+Neuron lock: 1 + 0.125 = 1.125 bonus multiplier
+Voting power per ICP: 1 * 1.125 * 1.48 = 1.665
+Expected Voting Power with 10 ICP: 1.665 * 10 = 16.65
 
 Ref: https://internetcomputer.org/docs/current/tokenomics/nns/nns-staking-voting-rewards/#voting-power
 
