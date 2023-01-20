@@ -34,8 +34,67 @@ public func factorial(n : Nat) : async Nat {
 
 4. Write a function number_of_words that takes a sentence and returns the number of words in the sentence.
 
+type Pattern = Text.Pattern;
+  let pattern : Pattern = #char(' ');
 
+    public func number_of_words(t : Text) : async Nat{
+      let iter = Text.split(t, pattern);
+      let myArray : [Text] = Iter.toArray(iter);
+      var i:Nat=0;
+      for(words in myArray.vals()){
+        if(words!=""){
+          i := i+1;
+        }
+      };
+      return i;
+    };
 
 5. Write a function find_duplicates that takes an array of natural numbers and returns a new array containing all duplicate numbers. The order of the elements in the returned array should be the same as the order of the first occurrence in the input array.
 
+import Nat "mo:base/Nat";
+import Array "mo:base/Array";
+import Buffer "mo:base/Buffer";
+
+actor {
+
+  public query func find_duplicates(a : [Nat]) : async [Nat] {
+      var n : Nat = 0;
+      let bb = Buffer.Buffer<Nat>(1);
+      let bbb = Buffer.Buffer<Nat>(1);
+      for (k in a.vals()) {
+        if(Buffer.contains<Nat>(bbb, k, Nat.equal) == false){
+          bbb.add(k);
+        }
+      };
+      for (k in bbb.vals()) {
+        n := 0;
+        for(kk in a.vals()){
+          if(k == kk){
+            n += 1;
+          };
+        };
+      
+        if(n > 1){
+          bb.add(k);
+        }   
+      };
+        return Buffer.toArray(bb);
+    }
+ }
+
+
 6. Write a function convert_to_binary that takes a natural number n and returns a string representing the binary representation of n.
+
+public query func convert_to_binary(n : Nat) : async Text {
+    var binary : Text = "";
+    var num : Nat = n;
+    while (num > 0) {
+        if (num % 2 == 0) {
+          binary := "0" # binary;
+        } else {
+          binary := "1" # binary;
+        };
+        num := num / 2;
+      };
+    return binary;
+  };
